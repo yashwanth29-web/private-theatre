@@ -640,7 +640,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                               : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
                           }`}
                         >
-                          {count} {count === 1 ? 'Person' : count === 2 ? 'Couple' : `${count} Guests`}
+                          {count === 1 ? '1 Person' : count === 2 ? '2 (Couple)' : `${count} Guests`}
                         </button>
                       ))}
                     </div>
