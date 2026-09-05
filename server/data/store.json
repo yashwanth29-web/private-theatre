@@ -1,0 +1,270 @@
+{
+  "slots": [
+    {
+      "id": "slot-1",
+      "label": "10:00 AM - 12:30 PM",
+      "shortTime": "10:00 AM",
+      "tier": "Matinee"
+    },
+    {
+      "id": "slot-2",
+      "label": "01:00 PM - 03:30 PM",
+      "shortTime": "01:00 PM",
+      "tier": "Afternoon"
+    },
+    {
+      "id": "slot-3",
+      "label": "04:00 PM - 06:30 PM",
+      "shortTime": "04:00 PM",
+      "tier": "Sunset"
+    },
+    {
+      "id": "slot-4",
+      "label": "07:00 PM - 09:30 PM",
+      "shortTime": "07:00 PM",
+      "tier": "Prime Evening"
+    },
+    {
+      "id": "slot-5",
+      "label": "10:00 PM - 12:30 AM",
+      "shortTime": "10:00 PM",
+      "tier": "Midnight Special"
+    }
+  ],
+  "packages": [
+    {
+      "id": "cinema-classic",
+      "name": "Cinema Classic",
+      "tagline": "Pure private movie immersion",
+      "price": 1499,
+      "originalPrice": 1999,
+      "duration": "2.5 Hours",
+      "guests": "Up to 4 Guests",
+      "popular": false,
+      "features": [
+        "Exclusive private 4K HDR theatre hall",
+        "Dolby Atmos surround sound acoustics",
+        "Plush velvet recliner & lounge seating",
+        "Full OTT access (Netflix, Prime, Disney+) or HDMI/USB",
+        "Air-conditioned private suite",
+        "Complimentary popcorn & cold drinks"
+      ]
+    },
+    {
+      "id": "date-night-romantic",
+      "name": "Date Night Romantic",
+      "tagline": "The ultimate romantic movie getaway",
+      "price": 2299,
+      "originalPrice": 2899,
+      "duration": "2.5 Hours",
+      "guests": "Couple (2 Guests)",
+      "popular": true,
+      "features": [
+        "Exclusive romantic candle & fairy-light decor",
+        "Rose petal entryway and table setup",
+        "4K Dolby Atmos private movie screening",
+        "Heart-shaped celebration cake with candle",
+        "Couple heart balloons & photo frame setup",
+        "Complimentary snack basket & mocktails",
+        "Personalized romantic on-screen greeting slide"
+      ]
+    },
+    {
+      "id": "grand-celebration",
+      "name": "Grand Celebration",
+      "tagline": "Birthdays, Anniversaries & Proposals",
+      "price": 3499,
+      "originalPrice": 4299,
+      "duration": "3.0 Hours",
+      "guests": "Up to 8 Guests",
+      "popular": false,
+      "features": [
+        "Full balloon garland & theme celebration backdrop",
+        "Luminescent Neon sign ('Happy Birthday' / 'Marry Me' / 'Happy Anniversary')",
+        "1/2 Kg customized gourmet celebration cake",
+        "Party poppers, smoke blast & photography props",
+        "Custom montage / slide video played on 150-inch 4K screen",
+        "Celebration snack platters & signature mocktails",
+        "Assistance for cake cutting & surprise timing"
+      ]
+    },
+    {
+      "id": "custom-vip-gala",
+      "name": "Custom VIP Gala",
+      "tagline": "For unforgettable family & group memories",
+      "price": 5499,
+      "originalPrice": 6999,
+      "duration": "3.5 Hours",
+      "guests": "Up to 14 Guests",
+      "popular": false,
+      "features": [
+        "Extended 3.5-hour exclusive lounge & theatre access",
+        "Premium custom decor tailored to your milestone",
+        "1 Kg Premium Designer Cake",
+        "Multi-platter gourmet finger foods & refreshments",
+        "Professional photography assistance & photo print keepsake",
+        "Karaoke / Spotify party music setup + 4K Cinema",
+        "Dedicated VIP hospitality coordinator"
+      ]
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-rose-bouquet",
+      "name": "Fresh Dutch Rose Bouquet",
+      "price": 599,
+      "description": "Hand-tied premium red roses bouquet for your special one"
+    },
+    {
+      "id": "addon-red-velvet-cake",
+      "name": "Gourmet Red Velvet Heart Cake (1/2 Kg)",
+      "price": 499,
+      "description": "Freshly baked artisan heart cake with custom name piping"
+    },
+    {
+      "id": "addon-onscreen-video",
+      "name": "Custom 4K On-Screen Video Surprise",
+      "price": 399,
+      "description": "Send us your photos/video; we produce and play a cinematic surprise on screen"
+    },
+    {
+      "id": "addon-mini-photoshoot",
+      "name": "Mini Photo & Reel Shoot",
+      "price": 799,
+      "description": "High-res photos + 1 aesthetic Instagram reel shot and edited by our team"
+    },
+    {
+      "id": "addon-party-snack-combo",
+      "name": "Deluxe Nachos & Mocktail Platter",
+      "price": 349,
+      "description": "Crisp tortilla nachos with warm salsa & 2 iced fruit mocktails"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "name": "Harshitha & Srikanth",
+      "occasion": "Anniversary Celebration",
+      "rating": 5,
+      "date": "August 2026",
+      "comment": "Movie Date Guntur made our 2nd anniversary completely unforgettable! The fairy light decor, heart cake, and 4K screen with Dolby sound blew our expectations away. Extremely private and clean!",
+      "verified": true
+    },
+    {
+      "id": "rev-2",
+      "name": "Kalyan Varma",
+      "occasion": "Birthday Surprise",
+      "rating": 5,
+      "date": "July 2026",
+      "comment": "Planned a midnight birthday surprise for my best friend. The team secretly coordinated the custom video on screen right when the clock hit 12. Super professional hospitality!",
+      "verified": true
+    },
+    {
+      "id": "rev-3",
+      "name": "Pooja & Teja",
+      "occasion": "Romantic Proposal",
+      "rating": 5,
+      "date": "August 2026",
+      "comment": "I proposed here with the 'Marry Me' neon sign and rose petal walkway. She cried happy tears! Best romantic experience in Guntur hands down.",
+      "verified": true
+    },
+    {
+      "id": "rev-4",
+      "name": "Ramesh & Friends Gang",
+      "occasion": "Private Movie Night",
+      "rating": 5,
+      "date": "August 2026",
+      "comment": "Booked the 10 PM slot with 6 friends for a blockbuster re-watch. Screen quality is insane and recliner sofas are so comfortable. Felt like our own multi-crore home theatre!",
+      "verified": true
+    }
+  ],
+  "blockedSlots": [
+    {
+      "date": "2026-09-04",
+      "slotId": "slot-4",
+      "reason": "Walk-in VIP private anniversary booking"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "MDG-20260904-8921",
+      "customerName": "Nikhil Reddy",
+      "phone": "+91 98480 22334",
+      "email": "nikhil.reddy@gmail.com",
+      "occasion": "Birthday Surprise",
+      "date": "2026-09-04",
+      "slotId": "slot-4",
+      "slotTime": "07:00 PM - 09:30 PM",
+      "packageId": "grand-celebration",
+      "packageName": "Grand Celebration",
+      "selectedAddOns": [
+        "Fresh Dutch Rose Bouquet"
+      ],
+      "movieTitle": "Interstellar (4K UHD)",
+      "specialRequest": "Please display the surprise slideshow right at interval",
+      "totalAmount": 4098,
+      "status": "confirmed",
+      "paymentId": "pay_mock_982187212",
+      "createdAt": "2026-09-04T10:30:00.000Z"
+    },
+    {
+      "id": "MDG-20260904-7018",
+      "customerName": "Rahul Sharma",
+      "phone": "9848012345",
+      "email": "",
+      "occasion": "Birthday Surprise",
+      "date": "2026-09-04",
+      "slotId": "slot-1",
+      "slotTime": "10:00 AM - 12:30 PM",
+      "packageId": "grand-celebration",
+      "packageName": "Grand Celebration",
+      "selectedAddOns": [
+        "Fresh Dutch Rose Bouquet"
+      ],
+      "movieTitle": "Interstellar 4K",
+      "specialRequest": "",
+      "totalAmount": 4098,
+      "status": "confirmed",
+      "paymentId": "pay_rzp_1788535229716_fgtcpr",
+      "createdAt": "2026-09-04T15:20:29.760Z"
+    },
+    {
+      "id": "MDG-20260905-3956",
+      "customerName": "hhh",
+      "phone": "989890989",
+      "email": "nin@gmail.com",
+      "occasion": "Birthday Surprise",
+      "date": "2026-09-05",
+      "slotId": "slot-4",
+      "slotTime": "07:00 PM - 09:30 PM",
+      "packageId": "grand-celebration",
+      "packageName": "Grand Celebration",
+      "selectedAddOns": [],
+      "movieTitle": "kjj",
+      "specialRequest": "",
+      "totalAmount": 3499,
+      "status": "confirmed",
+      "paymentId": "pay_rzp_1788537838252_317l04",
+      "createdAt": "2026-09-04T16:03:58.270Z"
+    },
+    {
+      "id": "MDG-20260904-2086",
+      "customerName": "Kavya Reddy",
+      "phone": "9848011223",
+      "email": "",
+      "occasion": "Birthday Surprise",
+      "date": "2026-09-04",
+      "slotId": "slot-2",
+      "slotTime": "01:00 PM - 03:30 PM",
+      "packageId": "grand-celebration",
+      "packageName": "Grand Celebration",
+      "selectedAddOns": [],
+      "movieTitle": "Surprise / OTT Selection on Arrival",
+      "specialRequest": "",
+      "totalAmount": 3499,
+      "status": "confirmed",
+      "paymentId": "pay_sim_1788539325491_4447l5",
+      "createdAt": "2026-09-04T16:28:45.528Z"
+    }
+  ]
+}
