@@ -73,6 +73,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   );
   const [selectedDate, setSelectedDate] = useState<string>(initialDate || getTodayStr());
   const [selectedSlotId, setSelectedSlotId] = useState<string>(initialSlotId || 'slot-4');
+  const [guestCount, setGuestCount] = useState<number>(2);
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [movieTitle, setMovieTitle] = useState<string>('');
   const [customerName, setCustomerName] = useState<string>('');
@@ -219,6 +220,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       occasion: selectedOccasion,
       date: selectedDate,
       slotId: selectedSlotId,
+      guestCount,
       packageId: selectedPackageId,
       selectedAddOns,
       movieTitle: movieTitle.trim() || 'Choice on Arrival (OTT / Personal)',
@@ -255,6 +257,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         date: selectedDate,
         slotId: selectedSlotId,
         slotTime: currentSlot?.label || '07:00 PM - 09:30 PM',
+        guestCount,
         packageId: selectedPackageId,
         packageName: currentPackage?.name || 'Private Theatre Experience',
         selectedAddOns,
@@ -291,6 +294,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       `*Occasion:* ${confirmedBooking.occasion}\n` +
       `*Date:* ${confirmedBooking.date}\n` +
       `*Time Slot:* ${confirmedBooking.slotTime}\n` +
+      `*Guests:* ${confirmedBooking.guestCount || guestCount} People\n` +
       `*Package:* ${confirmedBooking.packageName} (₹${confirmedBooking.totalAmount})\n` +
       (confirmedBooking.movieTitle ? `*Movie Preference:* ${confirmedBooking.movieTitle}\n` : '') +
       (confirmedBooking.selectedAddOns?.length ? `*Add-ons:* ${confirmedBooking.selectedAddOns.join(', ')}\n` : '') +
@@ -584,6 +588,64 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     )}
                   </div>
 
+                  {/* Number of Members / Guests Attending */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-700">
+                        Number of Guests / Members Attending
+                      </label>
+                      <span className="text-[11px] text-slate-500 font-normal">
+                        Suite capacity: {currentPackage?.guests || 'Up to 8 Guests'}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
+                      <div>
+                        <div className="text-xs font-bold text-slate-900">
+                          {guestCount} {guestCount === 1 ? 'Guest' : 'Guests'}
+                          <span className="ml-1.5 text-[11px] font-normal text-slate-500">
+                            ({guestCount === 1 ? 'Individual' : guestCount === 2 ? 'Couple' : guestCount <= 4 ? 'Small Group' : 'Family / Party'})
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-emerald-700 font-medium">Exclusive private suite for all your members</div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setGuestCount(Math.max(1, guestCount - 1))}
+                          className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 hover:bg-slate-100 active:scale-95 transition-all text-sm shadow-2xs"
+                        >
+                          -
+                        </button>
+                        <span className="font-bold text-sm text-slate-900 w-7 text-center">{guestCount}</span>
+                        <button
+                          type="button"
+                          onClick={() => setGuestCount(Math.min(12, guestCount + 1))}
+                          className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 hover:bg-slate-100 active:scale-95 transition-all text-sm shadow-2xs"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 mt-2">
+                      {[1, 2, 4, 6, 8].map((count) => (
+                        <button
+                          type="button"
+                          key={count}
+                          onClick={() => setGuestCount(count)}
+                          className={`px-3 py-1 rounded-lg text-xs font-medium border transition-colors ${
+                            guestCount === count
+                              ? 'bg-emerald-600 text-white border-emerald-600 font-semibold shadow-2xs'
+                              : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                          }`}
+                        >
+                          {count} {count === 1 ? 'Person' : count === 2 ? 'Couple' : `${count} Guests`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
                   {/* Movie Preference */}
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">
@@ -801,8 +863,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
 
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Duration &amp; Guests:</span>
-                    <span className="text-slate-700">{currentPackage?.duration} • {currentPackage?.guests}</span>
+                    <span className="text-slate-500">Members Attending:</span>
+                    <span className="font-semibold text-slate-900">{guestCount} {guestCount === 1 ? 'Guest' : 'Guests'}</span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Duration:</span>
+                    <span className="text-slate-700">{currentPackage?.duration}</span>
                   </div>
 
                   {selectedAddOns.length > 0 && (
@@ -889,11 +956,16 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid grid-cols-3 gap-2 text-xs">
                 <div>
                   <span className="text-[10px] text-slate-500">Date &amp; Slot</span>
                   <div className="font-medium text-slate-900">{confirmedBooking?.date}</div>
                   <div className="font-semibold text-emerald-700">{confirmedBooking?.slotTime}</div>
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-500">Guests</span>
+                  <div className="font-semibold text-slate-900">{confirmedBooking?.guestCount || guestCount} People</div>
+                  <div className="text-[10px] text-slate-500">VIP Lounge</div>
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-500">Package &amp; Total</span>

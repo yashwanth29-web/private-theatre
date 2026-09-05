@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { REAL_IMAGES } from '../data/content';
-import { Sparkles, ArrowRight, Calendar, Shield, Film, Volume2, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, Calendar, Film, Volume2, Shield, ChevronDown } from 'lucide-react';
 
 interface CinematicStoryHeroProps {
   onOpenBooking: (initialOccasion?: string) => void;
@@ -15,7 +15,7 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
   const [currentScene, setCurrentScene] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 
-  // 100% Crystal-Clear, High-Definition Photographs
+  // High-Resolution Direct Photographs
   const scenes = [
     {
       id: '01-arrival',
@@ -49,7 +49,7 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
     },
   ];
 
-  // Preload all high-res photos on initial mount
+  // Preload all photos
   useEffect(() => {
     scenes.forEach((s) => {
       const img = new Image();
@@ -97,12 +97,12 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
   }, []);
 
   return (
-    // Compact 220vh container for crisp, responsive scroll progression
-    <section ref={containerRef} className="relative w-full h-[220vh] bg-slate-950 select-none">
+    // Clean bright container with full natural photographic visibility
+    <section ref={containerRef} className="relative w-full h-[220vh] bg-slate-50 select-none">
       {/* Pinned Viewport Container */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-slate-950">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-slate-100">
         
-        {/* Layered High-Res Photographic Backgrounds */}
+        {/* Layered High-Res Photographic Backgrounds: Natural, Bright & Crisp */}
         {scenes.map((scene, idx) => {
           const isActive = currentScene === idx;
 
@@ -119,109 +119,97 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
               <img
                 src={scene.image}
                 alt={scene.title}
-                className="w-full h-full object-cover object-center scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-center"
                 loading="eager"
               />
             </div>
           );
         })}
 
-        {/* Cinematic Vignette Overlay: Guarantees 100% Crystal-Clear Contrast and Depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/70 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(2,6,23,0.75)_100%)] z-10 pointer-events-none" />
-
         {/* Top Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-white/10 z-40">
+        <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-slate-200/60 z-40">
           <div
-            className="h-full bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 transition-all duration-100"
+            className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-100"
             style={{ width: `${(scrollProgress * 100).toFixed(1)}%` }}
           />
         </div>
 
         {/* ================================================== */}
-        {/* SYNCHRONIZED SCENE OVERLAYS (HIGH-CONTRAST & ELEGANT) */}
+        {/* FROSTED GLASS TRANSLUCENT CARDS: NO DARK OVERLAYS  */}
         {/* ================================================== */}
 
         {/* SCENE 01 — ARRIVAL */}
         <div
-          className={`absolute inset-0 flex items-center justify-center px-6 pt-20 sm:pt-24 pb-6 text-center z-20 pointer-events-none transition-opacity duration-200 ${
+          className={`absolute inset-0 flex items-center justify-center px-4 sm:px-6 pt-16 text-center z-20 pointer-events-none transition-opacity duration-200 ${
             currentScene === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="max-w-3xl flex flex-col items-center p-4 sm:p-6">
-            {/* Frosted Glass Header Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-5 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              <span className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-white/95">
+          <div className="max-w-xl w-full bg-white/85 sm:bg-white/90 backdrop-blur-md border border-white/90 shadow-2xl rounded-3xl p-6 sm:p-9 flex flex-col items-center">
+            {/* Header Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/80 mb-3.5 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-900">
                 Private Cinema &amp; Celebration Lounge • Guntur
               </span>
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             </div>
 
-            {/* High-Contrast, Radiant Typography */}
-            <h1 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.12] mb-5 drop-shadow-md">
-              <span className="block text-white">Your Theatre.</span>
-              <span className="block bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
+            {/* Crisp, High-Contrast Typography */}
+            <h1 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 leading-[1.14] mb-6">
+              <span className="block text-slate-900">Your Theatre.</span>
+              <span className="block bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 Your People.
               </span>
-              <span className="block text-white">Your Moment.</span>
+              <span className="block text-slate-900">Your Moment.</span>
             </h1>
 
-            <p className="text-slate-200 text-sm sm:text-base font-normal max-w-xl mx-auto mb-8 leading-relaxed drop-shadow-xs">
-              Experience 150-inch 4K HDR projection, Dolby Atmos sound, and plush recliners in total privacy.
-              Perfect for couple dates, surprise birthdays, proposals, and family binge-watching.
-            </p>
-
-            {/* Clean, High-End CTA Buttons */}
-            <div className="pointer-events-auto flex flex-col sm:flex-row items-center gap-3.5">
+            {/* CTAs */}
+            <div className="pointer-events-auto flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
               <button
                 onClick={() => onOpenBooking()}
-                className="px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 flex items-center gap-2.5"
+                className="w-full sm:w-auto px-7 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
                 <span>Book Your Experience</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               <button
                 onClick={onExploreSchedule}
-                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 font-medium text-sm transition-all duration-200 hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto px-5 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs uppercase tracking-wider transition-all"
               >
-                Explore Experience
+                Explore Theatre
               </button>
             </div>
 
-            {/* Subtle Scroll Indicator */}
-            <div className="mt-8 flex flex-col items-center gap-1.5 text-slate-400 text-[10px] uppercase tracking-widest font-medium animate-pulse">
+            {/* Scroll Indicator */}
+            <div className="mt-5 flex flex-col items-center gap-1 text-slate-500 text-[10px] uppercase tracking-widest font-semibold">
               <span>Scroll to step inside</span>
-              <ChevronDown className="w-4 h-4 text-emerald-400" />
+              <ChevronDown className="w-3.5 h-3.5 text-emerald-600 animate-bounce" />
             </div>
           </div>
         </div>
 
         {/* SCENE 02 — ENTER */}
         <div
-          className={`absolute inset-0 flex items-center justify-center px-6 pt-20 sm:pt-24 pb-6 text-center z-20 pointer-events-none transition-opacity duration-200 ${
+          className={`absolute inset-0 flex items-center justify-center px-4 sm:px-6 pt-16 text-center z-20 pointer-events-none transition-opacity duration-200 ${
             currentScene === 1 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="max-w-2xl flex flex-col items-center p-4 sm:p-6">
-            <span className="text-[10px] sm:text-xs uppercase font-semibold tracking-[0.25em] text-emerald-300 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/15 mb-4 shadow-sm">
+          <div className="max-w-lg w-full bg-white/85 sm:bg-white/90 backdrop-blur-md border border-white/90 shadow-2xl rounded-3xl p-6 sm:p-9 flex flex-col items-center">
+            <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-[0.25em] text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 mb-3 shadow-2xs">
               02 • Physical Ambience
             </span>
-            <h2 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight mb-4 drop-shadow-md">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight leading-tight mb-6">
               Step Inside Luxury.
             </h2>
-            <p className="text-slate-200 text-sm sm:text-base font-normal max-w-lg mb-7 leading-relaxed drop-shadow-xs">
-              An intimate, acoustically sealed suite designed for ultimate comfort. Custom velvet couches, mood lighting, and zero outside disturbances.
-            </p>
 
             <div className="pointer-events-auto">
               <button
                 onClick={() => onOpenBooking()}
-                className="px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 flex items-center gap-2"
+                className="px-7 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
               >
                 <span>Reserve This Suite</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -229,49 +217,48 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
 
         {/* SCENE 03 — THE CINEMA */}
         <div
-          className={`absolute inset-0 flex items-center justify-center px-6 pt-20 sm:pt-24 pb-6 text-center z-20 pointer-events-none transition-opacity duration-200 ${
+          className={`absolute inset-0 flex items-center justify-center px-4 sm:px-6 pt-16 text-center z-20 pointer-events-none transition-opacity duration-200 ${
             currentScene === 2 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="max-w-3xl flex flex-col items-center p-4 sm:p-6">
-            <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-emerald-300 font-semibold text-[10px] sm:text-xs uppercase tracking-widest mb-4 border border-white/15 shadow-sm">
-              100% Private • Zero Crowd Interruption
+          <div className="max-w-xl w-full bg-white/85 sm:bg-white/90 backdrop-blur-md border border-white/90 shadow-2xl rounded-3xl p-6 sm:p-9 flex flex-col items-center">
+            <div className="inline-block px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-bold text-[10px] sm:text-xs uppercase tracking-widest mb-3 border border-emerald-200 shadow-2xs">
+              100% Private • Zero Distractions
             </div>
 
-            <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight mb-5 drop-shadow-md">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 tracking-tight leading-tight mb-5">
               Not a Crowd.<br />
-              Not a Public Show.<br />
-              <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 Just Your People.
               </span>
             </h2>
 
-            {/* Feature Cards with Frosted Dark Glass */}
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-4 w-full max-w-lg text-center mb-6">
-              <div className="p-3 sm:p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-lg">
-                <Film className="w-4 h-4 text-emerald-400 mx-auto mb-1.5" />
-                <div className="text-xs sm:text-sm font-bold text-white">4K Laser Cinema</div>
-                <div className="text-[10px] sm:text-[11px] text-slate-300 mt-0.5">150&quot; Widescreen</div>
+            {/* Feature Badges */}
+            <div className="grid grid-cols-3 gap-2.5 w-full max-w-md text-center mb-5">
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <Film className="w-4 h-4 text-emerald-600 mx-auto mb-1" />
+                <div className="text-xs font-bold text-slate-900">4K Laser</div>
+                <div className="text-[10px] text-slate-500">150&quot; Screen</div>
               </div>
-              <div className="p-3 sm:p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-lg">
-                <Volume2 className="w-4 h-4 text-amber-400 mx-auto mb-1.5" />
-                <div className="text-xs sm:text-sm font-bold text-white">Dolby Atmos</div>
-                <div className="text-[10px] sm:text-[11px] text-slate-300 mt-0.5">Acoustic Immersion</div>
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <Volume2 className="w-4 h-4 text-amber-600 mx-auto mb-1" />
+                <div className="text-xs font-bold text-slate-900">Dolby Sound</div>
+                <div className="text-[10px] text-slate-500">Atmos Surround</div>
               </div>
-              <div className="p-3 sm:p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-lg">
-                <Shield className="w-4 h-4 text-teal-400 mx-auto mb-1.5" />
-                <div className="text-xs sm:text-sm font-bold text-white">VIP Privacy</div>
-                <div className="text-[10px] sm:text-[11px] text-slate-300 mt-0.5">Electric Recliners</div>
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <Shield className="w-4 h-4 text-teal-600 mx-auto mb-1" />
+                <div className="text-xs font-bold text-slate-900">VIP Privacy</div>
+                <div className="text-[10px] text-slate-500">Recliner Suite</div>
               </div>
             </div>
 
             <div className="pointer-events-auto">
               <button
                 onClick={() => onOpenBooking()}
-                className="px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 flex items-center gap-2"
+                className="px-7 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
               >
                 <span>Book Private Screen</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -279,29 +266,26 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
 
         {/* SCENE 04 — MAKE IT A DATE */}
         <div
-          className={`absolute inset-0 flex items-center justify-center px-6 pt-20 sm:pt-24 pb-6 text-center z-20 pointer-events-none transition-opacity duration-200 ${
+          className={`absolute inset-0 flex items-center justify-center px-4 sm:px-6 pt-16 text-center z-20 pointer-events-none transition-opacity duration-200 ${
             currentScene === 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="max-w-2xl flex flex-col items-center p-4 sm:p-6">
-            <span className="text-[10px] sm:text-xs uppercase font-semibold tracking-[0.25em] text-amber-300 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/15 mb-4 shadow-sm">
+          <div className="max-w-lg w-full bg-white/85 sm:bg-white/90 backdrop-blur-md border border-white/90 shadow-2xl rounded-3xl p-6 sm:p-9 flex flex-col items-center">
+            <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-[0.25em] text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 mb-3 shadow-2xs">
               04 • Romantic Atmosphere
             </span>
-            <h2 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight mb-3 drop-shadow-md">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight leading-tight mb-4">
               Make It a Date.
             </h2>
-            <p className="text-slate-200 text-sm sm:text-base font-normal max-w-lg mb-6 leading-relaxed drop-shadow-xs">
-              Walk into a candlelit wonderland with rose petals, fairy lights, and your favorite story playing in ultra HD.
-            </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-7">
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
-                🌹 Rose Petal Carpet
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+              <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700">
+                🌹 Rose Petal Entryway
               </span>
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
+              <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700">
                 🎂 Signature Heart Cake
               </span>
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
+              <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700">
                 ✨ Glow Neon Backdrop
               </span>
             </div>
@@ -309,10 +293,10 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
             <div className="pointer-events-auto">
               <button
                 onClick={() => onOpenBooking('date-night')}
-                className="px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 flex items-center gap-2"
+                className="px-7 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
               >
-                <span>Book Date Night Experience</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Book Date Night</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -320,43 +304,37 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
 
         {/* SCENE 05 — CELEBRATE */}
         <div
-          className={`absolute inset-0 flex items-center justify-center px-6 pt-20 sm:pt-24 pb-6 text-center z-20 pointer-events-none transition-opacity duration-200 ${
+          className={`absolute inset-0 flex items-center justify-center px-4 sm:px-6 pt-16 text-center z-20 pointer-events-none transition-opacity duration-200 ${
             currentScene === 4 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="max-w-2xl flex flex-col items-center p-4 sm:p-6">
-            <span className="text-[10px] sm:text-xs uppercase font-semibold tracking-[0.25em] text-emerald-300 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/15 mb-4 shadow-sm">
+          <div className="max-w-lg w-full bg-white/85 sm:bg-white/90 backdrop-blur-md border border-white/90 shadow-2xl rounded-3xl p-6 sm:p-9 flex flex-col items-center">
+            <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-[0.25em] text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 mb-3 shadow-2xs">
               05 • Milestones &amp; Joy
             </span>
-            <h2 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight mb-3 drop-shadow-md">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight leading-tight mb-4">
               Make It a Memory.
             </h2>
-            <p className="text-slate-200 text-sm sm:text-base font-normal max-w-lg mb-6 leading-relaxed drop-shadow-xs">
-              Surprise your loved ones with customized on-screen video montage greetings, balloon arches, and gourmet cakes.
-            </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-7">
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+              <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700">
                 🎉 Birthdays
               </span>
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
+              <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700">
                 💍 Proposals
               </span>
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
+              <span className="px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700">
                 🥂 Anniversaries
-              </span>
-              <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white shadow-sm">
-                🍿 Binge Parties
               </span>
             </div>
 
             <div className="pointer-events-auto">
               <button
                 onClick={() => onOpenBooking('birthday')}
-                className="px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 flex items-center gap-2"
+                className="px-7 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
               >
-                <span>Book Celebration Package</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Book Celebration</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -364,37 +342,34 @@ export const CinematicStoryHero: React.FC<CinematicStoryHeroProps> = ({
 
         {/* SCENE 06 — YOUR MOMENT */}
         <div
-          className={`absolute inset-0 flex items-center justify-center px-6 pt-20 sm:pt-24 pb-6 text-center z-20 pointer-events-none transition-opacity duration-200 ${
+          className={`absolute inset-0 flex items-center justify-center px-4 sm:px-6 pt-16 text-center z-20 pointer-events-none transition-opacity duration-200 ${
             currentScene === 5 ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="max-w-2xl flex flex-col items-center p-4 sm:p-6">
-            <span className="text-[10px] sm:text-xs uppercase font-semibold tracking-[0.25em] text-amber-300 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/15 mb-4 shadow-sm">
+          <div className="max-w-lg w-full bg-white/85 sm:bg-white/90 backdrop-blur-md border border-white/90 shadow-2xl rounded-3xl p-6 sm:p-9 flex flex-col items-center">
+            <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-[0.25em] text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 mb-3 shadow-2xs">
               06 • The Experience Awaits
             </span>
-            <h2 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight mb-4 drop-shadow-md">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-900 tracking-tight leading-tight mb-5">
               One Theatre.<br />
               One Moment.<br />
-              <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 Only Yours.
               </span>
             </h2>
-            <p className="text-slate-200 text-sm sm:text-base font-normal max-w-md mb-7 leading-relaxed drop-shadow-xs">
-              Select your favorite slot, choose your package, and walk in to a prepared private cinema.
-            </p>
 
-            <div className="pointer-events-auto flex flex-col sm:flex-row items-center gap-3">
+            <div className="pointer-events-auto flex items-center justify-center gap-3">
               <button
                 onClick={() => onOpenBooking()}
-                className="px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 flex items-center gap-2"
+                className="px-7 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-3.5 h-3.5" />
                 <span>Reserve Your Slot</span>
               </button>
 
               <button
                 onClick={onExploreSchedule}
-                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 font-medium text-sm transition-all duration-200 hover:scale-105 active:scale-95"
+                className="px-5 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs uppercase tracking-wider transition-all"
               >
                 View Live Slots
               </button>

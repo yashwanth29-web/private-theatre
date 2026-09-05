@@ -50,6 +50,7 @@ export interface Booking {
   selectedAddOns: string[];
   movieTitle: string;
   specialRequest?: string;
+  guestCount?: number;
   totalAmount: number;
   status: 'confirmed' | 'cancelled' | 'completed';
   paymentId: string;
