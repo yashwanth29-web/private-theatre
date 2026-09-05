@@ -32,37 +32,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenAdmin }) =>
           <div className="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center transition-transform group-hover:scale-105 shadow-xs">
             <Film className="w-4 h-4 text-emerald-600" />
           </div>
-          <span className="font-display font-black text-base sm:text-lg tracking-[0.2em] text-slate-900 flex items-center gap-2">
+          <span className="font-sans font-extrabold text-base sm:text-lg tracking-wider text-slate-900 flex items-center gap-2">
             MOVIE DATE
-            <span className="hidden sm:inline-block text-[9px] font-sans font-extrabold tracking-widest px-2 py-0.5 rounded-full bg-emerald-100/80 text-emerald-800 border border-emerald-300/60">
+            <span className="hidden sm:inline-block text-[9px] font-sans font-bold tracking-widest px-2 py-0.5 rounded-full bg-emerald-100/80 text-emerald-800 border border-emerald-300/60">
               GUNTUR
             </span>
           </span>
         </a>
 
-        {/* Desktop Navigation Links (Dark Navy / Charcoal with Fresh Green Hover) */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
           <a
             href="#experience"
-            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-bold"
+            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-semibold"
           >
             Experience
           </a>
           <a
             href="#occasions"
-            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-bold"
+            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-semibold"
           >
             Occasions
           </a>
           <a
             href="#gallery"
-            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-bold"
+            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-semibold"
           >
             Gallery
           </a>
           <a
             href="#location"
-            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-bold"
+            className="text-xs uppercase tracking-[0.18em] text-slate-700 hover:text-emerald-600 transition-colors font-semibold"
           >
             Location
           </a>
@@ -79,10 +79,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenAdmin }) =>
             <span>Admin</span>
           </button>
 
-          {/* Green / Yellow Book Now Button */}
+          {/* Clean Book Now Button */}
           <button
             onClick={onOpenBooking}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-500 via-green-500 to-yellow-400 text-slate-950 font-black text-xs uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-md shadow-emerald-500/15 flex items-center gap-1.5"
+            className="px-5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
           >
             <Calendar className="w-3.5 h-3.5" />
             <span>Book Now</span>
@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenAdmin }) =>
                   setMobileMenuOpen(false);
                   onOpenBooking();
                 }}
-                className="w-full py-3.5 rounded-full bg-gradient-to-r from-emerald-500 via-green-500 to-yellow-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Book Now</span>
