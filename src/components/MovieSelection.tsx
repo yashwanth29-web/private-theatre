@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { POPULAR_MOVIES } from '../data/content';
+import { Movie } from '../types';
 import { Sparkles, Search, Check, Tv, HardDrive, Laptop, Film } from 'lucide-react';
 
 interface MovieSelectionProps {
@@ -13,7 +14,7 @@ export const MovieSelection: React.FC<MovieSelectionProps> = ({ selectedMovie, o
 
   const genres = ['All', 'Romance', 'Sci-Fi', 'Action', 'Drama'];
 
-  const filteredMovies = POPULAR_MOVIES.filter((movie: { title: string; genre: string }) => {
+  const filteredMovies = POPULAR_MOVIES.filter((movie: Movie) => {
     const matchesSearch = movie.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesGenre = activeGenre === 'All' || movie.genre.includes(activeGenre);
     return matchesSearch && matchesGenre;
@@ -94,7 +95,7 @@ export const MovieSelection: React.FC<MovieSelectionProps> = ({ selectedMovie, o
 
         {/* Horizontal Poster Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 max-w-6xl mx-auto">
-          {filteredMovies.map((movie: { id: string; title: string; genre: string; duration: string; rating: string; year: string }) => {
+          {filteredMovies.map((movie: Movie) => {
             const isSelected = selectedMovie === movie.title;
 
             return (

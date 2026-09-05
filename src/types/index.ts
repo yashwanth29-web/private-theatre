@@ -66,3 +66,14 @@ export interface OccasionItem {
   popularFor: string;
   defaultPackageId: string;
 }
+
+export interface Movie {
+  id: string;
+  title: string;
+  genre: string;
+  duration: string;
+  rating: string;
+  year: string;
+  poster: string;
+  source: string;
+}

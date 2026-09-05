@@ -38,12 +38,14 @@
   .text-cinema-gradient {
     background: linear-gradient(135deg, #15803d 0%, #16a34a 50%, #ca8a04 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gold-gradient {
     background: linear-gradient(135deg, #ca8a04 0%, #eab308 60%, #15803d 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 

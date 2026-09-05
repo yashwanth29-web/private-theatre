@@ -1,4 +1,4 @@
-import { OccasionItem } from '../types';
+import { OccasionItem, Movie } from '../types';
 
 // Authentic High-Resolution Photographs (1080p+, direct, zero thumbnails)
 export const REAL_IMAGES = {
@@ -129,11 +129,65 @@ export const VENUE_INFO = {
   city: 'Guntur',
 };
 
-export const POPULAR_MOVIES = [
-  { id: 'm1', title: 'Interstellar', genre: 'Sci-Fi', duration: '2h 49m', rating: '8.7', year: '2014' },
-  { id: 'm2', title: 'La La Land', genre: 'Romance', duration: '2h 08m', rating: '8.0', year: '2016' },
-  { id: 'm3', title: 'Inception', genre: 'Sci-Fi', duration: '2h 28m', rating: '8.8', year: '2010' },
-  { id: 'm4', title: 'The Notebook', genre: 'Romance', duration: '2h 03m', rating: '7.8', year: '2004' },
-  { id: 'm5', title: 'The Dark Knight', genre: 'Action', duration: '2h 32m', rating: '9.0', year: '2008' },
-  { id: 'm6', title: 'About Time', genre: 'Romance', duration: '2h 03m', rating: '7.8', year: '2013' },
+export const POPULAR_MOVIES: Movie[] = [
+  {
+    id: 'm1',
+    title: 'Interstellar',
+    genre: 'Sci-Fi',
+    duration: '2h 49m',
+    rating: '8.7',
+    year: '2014',
+    poster: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&auto=format&fit=crop&q=80',
+    source: 'Netflix 4K • Dolby Atmos',
+  },
+  {
+    id: 'm2',
+    title: 'La La Land',
+    genre: 'Romance',
+    duration: '2h 08m',
+    rating: '8.0',
+    year: '2016',
+    poster: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+    source: 'Prime Video • 4K HDR',
+  },
+  {
+    id: 'm3',
+    title: 'Inception',
+    genre: 'Sci-Fi',
+    duration: '2h 28m',
+    rating: '8.8',
+    year: '2010',
+    poster: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&auto=format&fit=crop&q=80',
+    source: 'Apple TV+ • 4K',
+  },
+  {
+    id: 'm4',
+    title: 'The Notebook',
+    genre: 'Romance',
+    duration: '2h 03m',
+    rating: '7.8',
+    year: '2004',
+    poster: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&auto=format&fit=crop&q=80',
+    source: 'Netflix HD • Remastered',
+  },
+  {
+    id: 'm5',
+    title: 'The Dark Knight',
+    genre: 'Action',
+    duration: '2h 32m',
+    rating: '9.0',
+    year: '2008',
+    poster: 'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=800&auto=format&fit=crop&q=80',
+    source: 'JioCinema • 4K HDR',
+  },
+  {
+    id: 'm6',
+    title: 'About Time',
+    genre: 'Romance',
+    duration: '2h 03m',
+    rating: '7.8',
+    year: '2013',
+    poster: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80',
+    source: 'Prime Video • Dolby 5.1',
+  },
 ];
