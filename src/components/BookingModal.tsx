@@ -314,80 +314,71 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fadeIn">
-      <div className="relative w-full max-w-4xl bg-white border border-slate-200/90 rounded-2xl shadow-2xl overflow-hidden my-auto text-slate-900 font-sans">
+    <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white border border-slate-200/90 rounded-2xl shadow-2xl overflow-hidden my-auto text-slate-900 font-sans flex flex-col max-h-[90vh]">
         
-        {/* Header (Meta / Microsoft Clean Enterprise Header) */}
-        <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-white">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-700">
+        {/* Compact Header */}
+        <div className="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-white shrink-0">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
               <Film className="w-4 h-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-base text-slate-900 tracking-tight">
-                  Reserve Private Theatre
-                </h3>
-                <span className="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/50">
+                <h3 className="font-bold text-sm text-slate-900">Reserve Suite</h3>
+                <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">
                   Instant Confirmation
                 </span>
               </div>
-              <p className="text-xs text-slate-500 font-normal">Movie Date Guntur • Exclusive Suite Hire</p>
+              <p className="text-[11px] text-slate-500">Movie Date Guntur • Brodipet 4th Line</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             {currentStep < 4 && (
-              <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${currentStep === 1 ? 'bg-emerald-600 text-white font-semibold' : 'bg-slate-100 text-slate-600'}`}>1</span>
-                <span className="text-slate-400">→</span>
-                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${currentStep === 2 ? 'bg-emerald-600 text-white font-semibold' : 'bg-slate-100 text-slate-600'}`}>2</span>
-                <span className="text-slate-400">→</span>
-                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${currentStep === 3 ? 'bg-emerald-600 text-white font-semibold' : 'bg-slate-100 text-slate-600'}`}>3</span>
+              <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${currentStep === 1 ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-100 text-slate-600'}`}>1</span>
+                <span className="text-slate-300">›</span>
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${currentStep === 2 ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-100 text-slate-600'}`}>2</span>
+                <span className="text-slate-300">›</span>
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${currentStep === 3 ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-100 text-slate-600'}`}>3</span>
               </div>
             )}
             <button
               onClick={onClose}
               aria-label="Close modal"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+              className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Validation alert banner */}
         {validationError && (
-          <div className="px-6 py-2.5 bg-amber-50 border-b border-amber-200/60 text-amber-900 text-xs font-medium flex items-center justify-between">
-            <span className="flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-amber-600" />
+          <div className="px-5 py-2 bg-amber-50 border-b border-amber-200/60 text-amber-900 text-xs font-medium flex items-center justify-between shrink-0">
+            <span className="flex items-center gap-1.5">
+              <HelpCircle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
               {validationError}
             </span>
-            <button onClick={() => setValidationError('')} className="text-amber-700 hover:text-amber-900 text-xs">
-              Dismiss
+            <button onClick={() => setValidationError('')} className="text-amber-700 hover:text-amber-900 text-xs font-semibold">
+              ✕
             </button>
           </div>
         )}
 
-        {/* Content Body: 2-Column Desktop Grid for Steps 1-3 */}
+        {/* Content Body */}
         {currentStep < 4 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
-            {/* Left Column: Interactive Form (7 of 12 cols) */}
-            <div className="lg:col-span-7 p-6 sm:p-7 max-h-[70vh] overflow-y-auto space-y-6">
-              
-              {/* STEP 1: EXPERIENCE & PACKAGE */}
-              {currentStep === 1 && (
-                <div className="space-y-6 animate-fadeIn">
-                  <div>
-                    <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-1">
-                      1. What are you celebrating?
-                    </h4>
-                    <p className="text-xs text-slate-500 font-normal">
-                      Each reservation includes bespoke atmospheric lighting and tailored setup.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+          <div className="p-4 sm:p-5 overflow-y-auto space-y-4 flex-1">
+            
+            {/* STEP 1: OCCASION & PACKAGE */}
+            {currentStep === 1 && (
+              <div className="space-y-4 animate-fadeIn">
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
+                    1. What are you celebrating?
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
                     {OCCASIONS.map((occ) => {
                       const isSelected = selectedOccasion === occ.title;
                       return (
@@ -399,242 +390,204 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                             if (occ.defaultPackageId) setSelectedPackageId(occ.defaultPackageId);
                             setValidationError('');
                           }}
-                          className={`p-3 rounded-xl text-left transition-all border flex flex-col justify-between h-24 ${
+                          className={`p-2.5 rounded-xl text-left border transition-all flex items-center gap-2 ${
                             isSelected
-                              ? 'bg-emerald-50/70 border-emerald-600 ring-1 ring-emerald-600 shadow-xs'
-                              : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
+                              ? 'bg-emerald-50 border-emerald-600 text-emerald-950 font-semibold ring-1 ring-emerald-600 shadow-2xs'
+                              : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
                           }`}
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="p-1.5 rounded-lg bg-white border border-slate-100 shadow-2xs">
-                              {getOccasionIcon(occ.title)}
-                            </span>
-                            {isSelected && <BadgeCheck className="w-4 h-4 text-emerald-600" />}
-                          </div>
-                          <div>
-                            <div className="font-semibold text-xs text-slate-900">{occ.title}</div>
-                            <div className="text-[11px] text-slate-500 truncate">{occ.subtitle}</div>
-                          </div>
+                          <span className="shrink-0">{getOccasionIcon(occ.title)}</span>
+                          <span className="text-xs font-medium truncate">{occ.title}</span>
                         </button>
                       );
                     })}
                   </div>
+                </div>
 
-                  <div className="pt-2">
-                    <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-1">
-                      2. Select Theatre Package
-                    </h4>
-                    <p className="text-xs text-slate-500 font-normal mb-3">
-                      100% private cinema hall hire with 4K projection and Atmos surround sound.
-                    </p>
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      2. Choose Theatre Package
+                    </label>
+                    <span className="text-[11px] text-emerald-700 font-medium">100% Private Hall Hire</span>
+                  </div>
 
-                    <div className="space-y-2.5">
-                      {packages.map((pkg) => {
-                        const isSelected = selectedPackageId === pkg.id;
-                        return (
-                          <div
-                            key={pkg.id}
-                            onClick={() => {
-                              setSelectedPackageId(pkg.id);
-                              setValidationError('');
-                            }}
-                            className={`p-3.5 rounded-xl cursor-pointer border transition-all ${
-                              isSelected
-                                ? 'bg-emerald-50/70 border-emerald-600 ring-1 ring-emerald-600 shadow-xs'
-                                : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
-                            }`}
-                          >
-                            <div className="flex items-center justify-between">
+                  <div className="space-y-2">
+                    {packages.map((pkg) => {
+                      const isSelected = selectedPackageId === pkg.id;
+                      return (
+                        <div
+                          key={pkg.id}
+                          onClick={() => {
+                            setSelectedPackageId(pkg.id);
+                            setValidationError('');
+                          }}
+                          className={`p-3 rounded-xl cursor-pointer border transition-all flex items-center justify-between ${
+                            isSelected
+                              ? 'bg-emerald-50/80 border-emerald-600 ring-1 ring-emerald-600 shadow-2xs'
+                              : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <div
+                              className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                                isSelected ? 'border-emerald-600 bg-emerald-600' : 'border-slate-300'
+                              }`}
+                            >
+                              {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                            </div>
+                            <div>
                               <div className="flex items-center gap-2">
-                                <span className="font-semibold text-sm text-slate-900">{pkg.name}</span>
+                                <span className="text-xs font-bold text-slate-900">{pkg.name}</span>
                                 {pkg.popular && (
-                                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
-                                    Most Popular
+                                  <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">
+                                    Popular
                                   </span>
                                 )}
                               </div>
-                              <span className="font-semibold text-sm text-emerald-700">
-                                ₹{pkg.price.toLocaleString()}
-                              </span>
-                            </div>
-
-                            <p className="text-xs text-slate-500 mt-1 font-normal">{pkg.tagline}</p>
-                            
-                            <div className="flex items-center gap-4 text-[11px] text-slate-600 mt-2 pt-2 border-t border-slate-100">
-                              <span>⏱️ {pkg.duration}</span>
-                              <span>👥 {pkg.guests}</span>
-                              <span className="text-emerald-700">✓ 4K Hall Exclusive</span>
+                              <div className="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
+                                <span>⏱️ {pkg.duration}</span>
+                                <span>•</span>
+                                <span>👥 {pkg.guests}</span>
+                              </div>
                             </div>
                           </div>
-                        );
-                      })}
-                    </div>
+                          <div className="text-right">
+                            <span className="text-sm font-bold text-emerald-700">₹{pkg.price}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
-              )}
+              </div>
+            )}
 
-              {/* STEP 2: DATE, TIME & ADD-ONS */}
-              {currentStep === 2 && (
-                <div className="space-y-6 animate-fadeIn">
-                  <div>
-                    <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-1">
-                      1. Select Date &amp; Time Slot
-                    </h4>
-                    <p className="text-xs text-slate-500 font-normal">
-                      Showing real-time availability for private hall booking.
-                    </p>
-                  </div>
-
-                  {/* Date Selection Pills */}
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Reservation Date
-                    </label>
-                    <div className="flex flex-wrap items-center gap-2 mb-2.5">
-                      <button
-                        type="button"
-                        onClick={() => setSelectedDate(getTodayStr())}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-                          selectedDate === getTodayStr()
-                            ? 'bg-emerald-600 text-white border-emerald-600'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
-                        }`}
-                      >
-                        Today ({getTodayStr().slice(5)})
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setSelectedDate(getTomorrowStr())}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
-                          selectedDate === getTomorrowStr()
-                            ? 'bg-emerald-600 text-white border-emerald-600'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
-                        }`}
-                      >
-                        Tomorrow
-                      </button>
-                    </div>
-
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-xl border border-slate-200">
-                      <CalendarIcon className="w-4 h-4 text-slate-500" />
+            {/* STEP 2: DATE, TIME, GUESTS & ADD-ONS */}
+            {currentStep === 2 && (
+              <div className="space-y-4 animate-fadeIn">
+                {/* Date */}
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                    1. Reservation Date
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedDate(getTodayStr())}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+                        selectedDate === getTodayStr()
+                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                      }`}
+                    >
+                      Today
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedDate(getTomorrowStr())}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+                        selectedDate === getTomorrowStr()
+                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                      }`}
+                    >
+                      Tomorrow
+                    </button>
+                    <div className="flex-1 flex items-center gap-2 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200">
+                      <CalendarIcon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                       <input
                         type="date"
                         min={getTodayStr()}
                         value={selectedDate}
                         onChange={(e) => setSelectedDate(e.target.value)}
-                        className="bg-transparent text-xs text-slate-900 font-medium focus:outline-none w-full cursor-pointer"
+                        className="bg-transparent text-xs text-slate-800 font-medium focus:outline-none w-full cursor-pointer"
                       />
                     </div>
                   </div>
+                </div>
 
-                  {/* Time Slots Grid */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <label className="block text-xs font-semibold text-slate-700">
-                        Available Showtimes
-                      </label>
-                      <span className="text-[11px] text-slate-500 font-normal">2.5 Hour Private Session</span>
-                    </div>
-
-                    {loadingSlots ? (
-                      <div className="p-6 text-center text-xs text-slate-400">
-                        Checking slot availability...
-                      </div>
-                    ) : (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {availableSlots.map((slot) => {
-                          const isAvailable = slot.status === 'available';
-                          const isSelected = selectedSlotId === slot.id;
-
-                          return (
-                            <button
-                              type="button"
-                              key={slot.id}
-                              disabled={!isAvailable}
-                              onClick={() => {
-                                setSelectedSlotId(slot.id);
-                                setValidationError('');
-                              }}
-                              className={`p-3 rounded-xl text-left border transition-all flex items-center justify-between ${
-                                !isAvailable
-                                  ? 'bg-slate-50 border-slate-200 text-slate-400 opacity-60 cursor-not-allowed'
-                                  : isSelected
-                                  ? 'bg-emerald-50/70 border-emerald-600 ring-1 ring-emerald-600 text-slate-900 shadow-2xs'
-                                  : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/50 text-slate-800'
-                              }`}
-                            >
-                              <div className="flex items-center gap-2.5">
-                                <Clock className={`w-4 h-4 ${isSelected ? 'text-emerald-700' : 'text-slate-400'}`} />
-                                <div>
-                                  <div className="font-semibold text-xs text-slate-900">{slot.shortTime}</div>
-                                  <div className="text-[10px] text-slate-500">{slot.tier}</div>
-                                </div>
-                              </div>
-                              <span
-                                className={`text-[10px] font-medium px-2 py-0.5 rounded-md ${
-                                  isSelected
-                                    ? 'bg-emerald-600 text-white font-semibold'
-                                    : isAvailable
-                                    ? 'bg-emerald-50 text-emerald-700'
-                                    : 'bg-slate-200 text-slate-600'
-                                }`}
-                              >
-                                {isSelected ? 'Selected' : isAvailable ? 'Available' : 'Booked'}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
+                {/* Available Slots */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      2. Showtime Slot
+                    </label>
+                    <span className="text-[11px] text-slate-500">2.5 Hour Exclusive Session</span>
                   </div>
 
-                  {/* Number of Members / Guests Attending */}
-                  <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <label className="block text-xs font-semibold text-slate-700">
-                        Number of Guests / Members Attending
-                      </label>
-                      <span className="text-[11px] text-slate-500 font-normal">
-                        Suite capacity: {currentPackage?.guests || 'Up to 8 Guests'}
-                      </span>
+                  {loadingSlots ? (
+                    <div className="p-4 text-center text-xs text-slate-400">Loading showtimes...</div>
+                  ) : (
+                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5">
+                      {availableSlots.map((slot) => {
+                        const isSelected = selectedSlotId === slot.id;
+                        const isBooked = slot.status === 'booked';
+                        return (
+                          <button
+                            type="button"
+                            key={slot.id}
+                            disabled={isBooked}
+                            onClick={() => {
+                              if (!isBooked) {
+                                setSelectedSlotId(slot.id);
+                                setValidationError('');
+                              }
+                            }}
+                            className={`p-2 rounded-lg text-center border transition-all ${
+                              isBooked
+                                ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed line-through'
+                                : isSelected
+                                ? 'bg-emerald-600 text-white border-emerald-600 font-bold shadow-2xs'
+                                : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                            }`}
+                          >
+                            <div className="text-xs font-semibold">{slot.shortTime}</div>
+                            <div className={`text-[10px] ${isSelected ? 'text-emerald-100' : 'text-slate-400'}`}>
+                              {isBooked ? 'Booked' : slot.tier}
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                {/* Number of Guests */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      3. Number of Guests
+                    </label>
+                    <span className="text-[11px] text-slate-500">Max: {currentPackage?.guests || 'Up to 8'}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center border border-slate-200 rounded-lg bg-slate-50 p-1">
+                      <button
+                        type="button"
+                        onClick={() => setGuestCount(Math.max(1, guestCount - 1))}
+                        className="w-7 h-7 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 hover:bg-slate-100 text-xs shadow-2xs"
+                      >
+                        -
+                      </button>
+                      <span className="font-bold text-xs text-slate-900 w-8 text-center">{guestCount}</span>
+                      <button
+                        type="button"
+                        onClick={() => setGuestCount(Math.min(12, guestCount + 1))}
+                        className="w-7 h-7 rounded bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 hover:bg-slate-100 text-xs shadow-2xs"
+                      >
+                        +
+                      </button>
                     </div>
 
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
-                      <div>
-                        <div className="text-xs font-bold text-slate-900">
-                          {guestCount} {guestCount === 1 ? 'Guest' : 'Guests'}
-                          <span className="ml-1.5 text-[11px] font-normal text-slate-500">
-                            ({guestCount === 1 ? 'Individual' : guestCount === 2 ? 'Couple' : guestCount <= 4 ? 'Small Group' : 'Family / Party'})
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-emerald-700 font-medium">Exclusive private suite for all your members</div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setGuestCount(Math.max(1, guestCount - 1))}
-                          className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 hover:bg-slate-100 active:scale-95 transition-all text-sm shadow-2xs"
-                        >
-                          -
-                        </button>
-                        <span className="font-bold text-sm text-slate-900 w-7 text-center">{guestCount}</span>
-                        <button
-                          type="button"
-                          onClick={() => setGuestCount(Math.min(12, guestCount + 1))}
-                          className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 hover:bg-slate-100 active:scale-95 transition-all text-sm shadow-2xs"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 mt-2">
+                    <div className="flex items-center gap-1.5 flex-wrap">
                       {[1, 2, 4, 6, 8].map((count) => (
                         <button
                           type="button"
                           key={count}
                           onClick={() => setGuestCount(count)}
-                          className={`px-3 py-1 rounded-lg text-xs font-medium border transition-colors ${
+                          className={`px-2.5 py-1 rounded-lg text-xs font-medium border transition-colors ${
                             guestCount === count
                               ? 'bg-emerald-600 text-white border-emerald-600 font-semibold shadow-2xs'
                               : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
@@ -645,310 +598,182 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       ))}
                     </div>
                   </div>
-
-                  {/* Movie Preference */}
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Movie or Media to Screen (Optional)
-                    </label>
-                    <div className="relative">
-                      <Film className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                      <input
-                        type="text"
-                        placeholder="e.g. Interstellar 4K, YouTube live match, or decide on arrival"
-                        value={movieTitle}
-                        onChange={(e) => setMovieTitle(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Celebration Add-ons */}
-                  <div>
-                    <h4 className="text-xs font-semibold text-slate-900 uppercase tracking-wider mb-2">
-                      Optional Celebration Upgrades
-                    </h4>
-                    <div className="space-y-2">
-                      {addOns.slice(0, 4).map((addon) => {
-                        const isAdded = selectedAddOns.includes(addon.name);
-                        return (
-                          <div
-                            key={addon.id}
-                            onClick={() => toggleAddOn(addon.name)}
-                            className={`p-2.5 rounded-xl cursor-pointer border flex items-center justify-between transition-colors ${
-                              isAdded
-                                ? 'bg-emerald-50/70 border-emerald-500 text-slate-900'
-                                : 'bg-white border-slate-200 hover:border-slate-300'
-                            }`}
-                          >
-                            <div className="pr-2">
-                              <div className="text-xs font-medium text-slate-900">{addon.name}</div>
-                              <div className="text-[11px] text-slate-500">{addon.description}</div>
-                            </div>
-                            <div className="flex items-center gap-2 shrink-0">
-                              <span className="text-xs font-semibold text-emerald-700">+₹{addon.price}</span>
-                              <div
-                                className={`w-5 h-5 rounded-md flex items-center justify-center text-xs ${
-                                  isAdded ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600'
-                                }`}
-                              >
-                                {isAdded ? <Check className="w-3 h-3" /> : <Plus className="w-3 h-3" />}
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* STEP 3: GUEST DETAILS & CONFIRMATION */}
-              {currentStep === 3 && (
-                <div className="space-y-5 animate-fadeIn">
-                  <div>
-                    <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-1">
-                      Guest Contact Information
-                    </h4>
-                    <p className="text-xs text-slate-500 font-normal">
-                      We will send your digital reservation pass and directions to WhatsApp.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Full Name <span className="text-rose-500">*</span>
-                      </label>
-                      <div className="relative">
-                        <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                        <input
-                          type="text"
-                          required
-                          placeholder="e.g. Ramesh Varma"
-                          value={customerName}
-                          onChange={(e) => {
-                            setCustomerName(e.target.value);
-                            setValidationError('');
-                          }}
-                          className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-medium"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        WhatsApp Number <span className="text-rose-500">*</span>
-                      </label>
-                      <div className="flex rounded-xl overflow-hidden border border-slate-200 focus-within:ring-1 focus-within:ring-emerald-500 focus-within:border-emerald-500">
-                        <div className="bg-slate-100 px-3 py-2 text-xs font-medium text-slate-600 border-r border-slate-200 flex items-center gap-1">
-                          <span>🇮🇳</span>
-                          <span>+91</span>
-                        </div>
-                        <input
-                          type="tel"
-                          required
-                          maxLength={10}
-                          placeholder="98480 12345"
-                          value={phone}
-                          onChange={(e) => {
-                            const val = e.target.value.replace(/\D/g, '');
-                            setPhone(val);
-                            setValidationError('');
-                          }}
-                          className="w-full px-3 py-2 text-xs bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none font-medium"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Email Address (Optional)
-                      </label>
-                      <div className="relative">
-                        <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                        <input
-                          type="email"
-                          placeholder="ramesh@example.com"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-medium"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Special Instructions or Surprise Timing
-                      </label>
-                      <textarea
-                        rows={2}
-                        placeholder="e.g. Name on cake: Priya; play custom proposal video at the 1-hour mark"
-                        value={specialRequest}
-                        onChange={(e) => setSpecialRequest(e.target.value)}
-                        className="w-full p-2.5 text-xs rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-medium"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Payment Preference */}
-                  <div className="pt-2">
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Payment Method
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setPaymentOption('venue')}
-                        className={`p-3 rounded-xl border text-left transition-all flex items-center gap-2.5 ${
-                          paymentOption === 'venue'
-                            ? 'bg-emerald-50/70 border-emerald-600 ring-1 ring-emerald-600'
-                            : 'bg-white border-slate-200 hover:border-slate-300'
-                        }`}
-                      >
-                        <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <div>
-                          <div className="text-xs font-semibold text-slate-900">Pay at Venue</div>
-                          <div className="text-[10px] text-slate-500">Zero upfront deposit needed</div>
-                        </div>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setPaymentOption('upi')}
-                        className={`p-3 rounded-xl border text-left transition-all flex items-center gap-2.5 ${
-                          paymentOption === 'upi'
-                            ? 'bg-emerald-50/70 border-emerald-600 ring-1 ring-emerald-600'
-                            : 'bg-white border-slate-200 hover:border-slate-300'
-                        }`}
-                      >
-                        <QrCode className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <div>
-                          <div className="text-xs font-semibold text-slate-900">UPI / QR Scan</div>
-                          <div className="text-[10px] text-slate-500">GPay, PhonePe, Paytm</div>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Right Column: Live Enterprise Reservation Summary (5 of 12 cols) */}
-            <div className="lg:col-span-5 bg-slate-50/80 border-t lg:border-t-0 lg:border-l border-slate-200/90 p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">
-                    Reservation Summary
-                  </span>
-                  <span className="text-[11px] font-medium text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded">
-                    {selectedOccasion}
-                  </span>
                 </div>
 
-                <div className="space-y-3 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Package:</span>
-                    <span className="font-semibold text-slate-900">{currentPackage?.name}</span>
+                {/* Add-ons (Optional) */}
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                    Celebration Add-ons (Optional)
+                  </label>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {addOns.slice(0, 4).map((addon) => {
+                      const isAdded = selectedAddOns.includes(addon.name);
+                      return (
+                        <button
+                          type="button"
+                          key={addon.id}
+                          onClick={() => toggleAddOn(addon.name)}
+                          className={`px-2.5 py-1.5 rounded-lg text-left border flex items-center justify-between text-xs transition-colors ${
+                            isAdded
+                              ? 'bg-emerald-50 border-emerald-600 text-emerald-950 font-medium'
+                              : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                          }`}
+                        >
+                          <span className="truncate">{addon.name}</span>
+                          <span className="text-[11px] font-semibold text-emerald-700 ml-1 shrink-0">
+                            {isAdded ? '✓ Added' : `+₹${addon.price}`}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
+                </div>
+              </div>
+            )}
 
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Date:</span>
-                    <span className="font-medium text-slate-900">{selectedDate}</span>
+            {/* STEP 3: CONTACT & CONFIRMATION */}
+            {currentStep === 3 && (
+              <div className="space-y-3.5 animate-fadeIn">
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">
+                    Full Name <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <User className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Ramesh Varma"
+                      value={customerName}
+                      onChange={(e) => {
+                        setCustomerName(e.target.value);
+                        setValidationError('');
+                      }}
+                      className="w-full pl-8 pr-3 py-2 text-xs rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-medium"
+                    />
                   </div>
+                </div>
 
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Time Slot:</span>
-                    <span className="font-semibold text-emerald-700">{currentSlot?.label}</span>
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">
+                    WhatsApp Phone Number <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="flex rounded-lg overflow-hidden border border-slate-200 focus-within:ring-1 focus-within:ring-emerald-500">
+                    <div className="bg-slate-100 px-2.5 py-2 text-xs font-medium text-slate-600 border-r border-slate-200">
+                      🇮🇳 +91
+                    </div>
+                    <input
+                      type="tel"
+                      required
+                      maxLength={10}
+                      placeholder="98480 12345"
+                      value={phone}
+                      onChange={(e) => {
+                        const val = e.target.value.replace(/\D/g, '');
+                        setPhone(val);
+                        setValidationError('');
+                      }}
+                      className="w-full px-3 py-2 text-xs bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none font-medium"
+                    />
                   </div>
+                </div>
 
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Members Attending:</span>
-                    <span className="font-semibold text-slate-900">{guestCount} {guestCount === 1 ? 'Guest' : 'Guests'}</span>
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">
+                    Special Request or Cake Name (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Cake name: Priya, OTT preference: Prime Video"
+                    value={specialRequest}
+                    onChange={(e) => setSpecialRequest(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-medium"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                    Payment Method
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setPaymentOption('venue')}
+                      className={`p-2.5 rounded-lg border text-left flex items-center gap-2 ${
+                        paymentOption === 'venue'
+                          ? 'bg-emerald-50 border-emerald-600 text-emerald-950 font-semibold ring-1 ring-emerald-600'
+                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <div>
+                        <div className="text-xs">Pay at Venue</div>
+                        <div className="text-[10px] text-slate-500 font-normal">Zero deposit needed</div>
+                      </div>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setPaymentOption('upi')}
+                      className={`p-2.5 rounded-lg border text-left flex items-center gap-2 ${
+                        paymentOption === 'upi'
+                          ? 'bg-emerald-50 border-emerald-600 text-emerald-950 font-semibold ring-1 ring-emerald-600'
+                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <QrCode className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <div>
+                        <div className="text-xs">UPI / QR Scan</div>
+                        <div className="text-[10px] text-slate-500 font-normal">GPay, PhonePe, Paytm</div>
+                      </div>
+                    </button>
                   </div>
+                </div>
 
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Duration:</span>
-                    <span className="text-slate-700">{currentPackage?.duration}</span>
+                {/* Compact Reservation Summary Card */}
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+                  <div className="flex justify-between font-bold text-slate-900">
+                    <span>{currentPackage?.name} ({selectedOccasion})</span>
+                    <span className="text-emerald-700 font-extrabold text-sm">₹{grandTotal}</span>
                   </div>
-
+                  <div className="flex justify-between text-slate-500 text-[11px]">
+                    <span>{selectedDate} • {currentSlot?.label}</span>
+                    <span>{guestCount} {guestCount === 1 ? 'Guest' : 'Guests'}</span>
+                  </div>
                   {selectedAddOns.length > 0 && (
-                    <div className="pt-2 border-t border-slate-200 space-y-1">
-                      <span className="text-[11px] font-semibold text-slate-600 uppercase">Selected Add-ons:</span>
-                      {selectedAddOns.map((name) => {
-                        const item = addOns.find((a) => a.name === name);
-                        return (
-                          <div key={name} className="flex justify-between text-[11px] text-slate-600">
-                            <span>+ {name}</span>
-                            <span>₹{item?.price}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  {movieTitle && (
-                    <div className="pt-2 border-t border-slate-200 flex justify-between text-xs">
-                      <span className="text-slate-500">Presentation:</span>
-                      <span className="font-medium text-slate-900 truncate max-w-[150px]">{movieTitle}</span>
+                    <div className="text-[10px] text-slate-500 pt-1 border-t border-slate-200">
+                      Add-ons: {selectedAddOns.join(', ')}
                     </div>
                   )}
                 </div>
-
-                {/* Total Calculation */}
-                <div className="mt-6 pt-4 border-t border-slate-200">
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <span className="text-xs font-semibold text-slate-900">Total Payable:</span>
-                      <p className="text-[10px] text-slate-500">All-inclusive • Zero hidden fees</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-2xl font-bold text-slate-900">
-                        ₹{grandTotal.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              {/* Guarantees */}
-              <div className="mt-6 pt-4 border-t border-slate-200/80 space-y-2 text-[11px] text-slate-500">
-                <div className="flex items-center gap-2">
-                  <BadgeCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Exclusive hall access: no outside guests allowed.</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Free rescheduling up to 4 hours prior to showtime.</span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         ) : (
           /* STEP 4: CONFIRMATION VIP PASS */
-          <div className="p-6 sm:p-10 max-w-xl mx-auto text-center animate-fadeIn">
-            <div className="w-14 h-14 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto mb-4 text-emerald-700 shadow-sm">
-              <CheckCircle2 className="w-8 h-8" />
+          <div className="p-5 max-w-lg mx-auto text-center animate-fadeIn flex-1 overflow-y-auto">
+            <div className="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto mb-3 text-emerald-700 shadow-sm">
+              <CheckCircle2 className="w-7 h-7" />
             </div>
 
-            <span className="text-xs uppercase font-semibold tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <span className="text-[11px] uppercase font-semibold tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
               Reservation Confirmed
             </span>
 
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mt-3 mb-1 tracking-tight">
+            <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1 tracking-tight">
               Your Private Suite is Reserved!
             </h3>
-            <p className="text-xs text-slate-600 max-w-md mx-auto mb-6">
+            <p className="text-xs text-slate-600 mb-4">
               Thank you, <strong className="text-slate-900">{confirmedBooking?.customerName}</strong>! We have locked
               in your slot at Movie Date Guntur.
             </p>
 
             {/* Apple Wallet Style Boarding Pass */}
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left shadow-sm space-y-3 mb-6">
-              <div className="flex items-center justify-between pb-3 border-b border-dashed border-slate-300">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left shadow-xs space-y-2.5 mb-5">
+              <div className="flex items-center justify-between pb-2 border-b border-dashed border-slate-300">
                 <div>
                   <span className="text-[10px] uppercase font-semibold text-slate-500">Booking Reference</span>
-                  <div className="font-mono text-sm font-bold text-emerald-700">{confirmedBooking?.id}</div>
+                  <div className="font-mono text-xs font-bold text-emerald-700">{confirmedBooking?.id}</div>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] uppercase font-semibold text-slate-500">Occasion</span>
@@ -959,36 +784,36 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <div>
                   <span className="text-[10px] text-slate-500">Date &amp; Slot</span>
-                  <div className="font-medium text-slate-900">{confirmedBooking?.date}</div>
-                  <div className="font-semibold text-emerald-700">{confirmedBooking?.slotTime}</div>
+                  <div className="font-medium text-slate-900 text-[11px]">{confirmedBooking?.date}</div>
+                  <div className="font-semibold text-emerald-700 text-[11px]">{confirmedBooking?.slotTime}</div>
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-500">Guests</span>
-                  <div className="font-semibold text-slate-900">{confirmedBooking?.guestCount || guestCount} People</div>
+                  <div className="font-semibold text-slate-900 text-[11px]">{confirmedBooking?.guestCount || guestCount} People</div>
                   <div className="text-[10px] text-slate-500">VIP Lounge</div>
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-500">Package &amp; Total</span>
-                  <div className="font-medium text-slate-900">{confirmedBooking?.packageName}</div>
-                  <div className="font-bold text-slate-900">₹{confirmedBooking?.totalAmount.toLocaleString()}</div>
+                  <div className="font-medium text-slate-900 text-[11px] truncate">{confirmedBooking?.packageName}</div>
+                  <div className="font-bold text-slate-900 text-[11px]">₹{confirmedBooking?.totalAmount.toLocaleString()}</div>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-slate-200 text-[11px] text-slate-500 flex items-center justify-between">
+              <div className="pt-2 border-t border-slate-200 text-[10px] text-slate-500 flex items-center justify-between">
                 <span>📍 Brodipet 4th Line, Guntur</span>
                 <span className="text-emerald-700 font-medium">✓ VIP Pass Active</span>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
               <a
                 href={getWhatsAppShareUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-sm flex items-center justify-center gap-2 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-xs flex items-center justify-center gap-1.5 transition-colors"
               >
-                <span>Send Details via WhatsApp</span>
+                <span>Share WhatsApp Pass</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
 
@@ -996,39 +821,43 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 href={getCalendarUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium text-xs flex items-center justify-center gap-2 transition-colors"
+                className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium text-xs flex items-center justify-center gap-1.5 transition-colors"
               >
-                <CalendarCheck className="w-4 h-4 text-slate-600" />
-                <span>Add to Google Calendar</span>
+                <CalendarCheck className="w-3.5 h-3.5 text-slate-600" />
+                <span>Add to Calendar</span>
               </a>
             </div>
           </div>
         )}
 
-        {/* Modal Controls (Steps 1-3) */}
+        {/* Modal Controls Footer (Steps 1-3) */}
         {currentStep < 4 && (
-          <div className="px-6 py-3.5 border-t border-slate-100 flex items-center justify-between bg-slate-50/50">
-            {currentStep > 1 ? (
-              <button
-                type="button"
-                onClick={() => {
-                  setValidationError('');
-                  setCurrentStep(currentStep - 1);
-                }}
-                className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5 transition-colors"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back</span>
-              </button>
-            ) : (
-              <div />
-            )}
+          <div className="px-5 py-3 border-t border-slate-100 flex items-center justify-between bg-slate-50/70 shrink-0">
+            <div className="flex items-center gap-2">
+              {currentStep > 1 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setValidationError('');
+                    setCurrentStep(currentStep - 1);
+                  }}
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1 transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Back</span>
+                </button>
+              )}
+              <div className="text-xs">
+                <span className="text-slate-500">Total: </span>
+                <span className="font-bold text-slate-900 text-sm">₹{grandTotal}</span>
+              </div>
+            </div>
 
             {currentStep < 3 ? (
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-xs flex items-center gap-1.5 transition-colors"
+                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-xs flex items-center gap-1.5 transition-colors"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -1038,14 +867,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 type="button"
                 disabled={isSubmitting}
                 onClick={handleConfirmReservation}
-                className="px-6 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs shadow-sm flex items-center gap-2 transition-colors disabled:opacity-50"
+                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm flex items-center gap-1.5 transition-colors disabled:opacity-50"
               >
                 {isSubmitting ? (
-                  <span>Reserving Suite...</span>
+                  <span>Reserving...</span>
                 ) : (
                   <>
                     <Lock className="w-3.5 h-3.5" />
-                    <span>Confirm Reservation (₹{grandTotal.toLocaleString()})</span>
+                    <span>Confirm Reservation (₹{grandTotal})</span>
                   </>
                 )}
               </button>
