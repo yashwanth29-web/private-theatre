@@ -111,7 +111,7 @@ export const MovieSelection: React.FC<MovieSelectionProps> = ({ selectedMovie, o
                 <div className="aspect-[2/3] w-full relative overflow-hidden bg-cinema-900">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${movie.})` }}
+                    style={{ backgroundImage: `url(${movie.poster})` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
