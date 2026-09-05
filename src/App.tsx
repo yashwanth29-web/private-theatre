@@ -4,13 +4,13 @@ import { CinematicStoryHero } from './components/CinematicStoryHero';
 import { Occasions } from './components/Occasions';
 import { TheExperience } from './components/TheExperience';
 import { GallerySection } from './components/GallerySection';
-import { SocialProof } from './components/SocialProof';
 import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
 import { FloatingCTA } from './components/FloatingCTA';
 import { BookingModal } from './components/BookingModal';
 import { AdminDashboard } from './components/AdminDashboard';
 import { Package, AddOn } from './types';
+import { DEFAULT_PACKAGES, DEFAULT_ADDONS } from './data/content';
 
 export const App: React.FC = () => {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
@@ -21,17 +21,20 @@ export const App: React.FC = () => {
   const [bookingDate, setBookingDate] = useState<string | undefined>();
   const [bookingSlotId, setBookingSlotId] = useState<string | undefined>();
 
-  const [packages, setPackages] = useState<Package[]>([]);
-  const [addOns, setAddOns] = useState<AddOn[]>([]);
+  const [packages, setPackages] = useState<Package[]>(DEFAULT_PACKAGES);
+  const [addOns, setAddOns] = useState<AddOn[]>(DEFAULT_ADDONS);
 
   useEffect(() => {
     fetch('/api/packages')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.packages) setPackages(data.packages);
-        if (data.addOns) setAddOns(data.addOns);
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
       })
-      .catch((err) => console.error('Failed to load packages:', err));
+      .then((data) => {
+        if (data.packages && data.packages.length > 0) setPackages(data.packages);
+        if (data.addOns && data.addOns.length > 0) setAddOns(data.addOns);
+      })
+      .catch((err) => console.log('Using default packages and add-ons:', err.message));
   }, []);
 
   const handleOpenBooking = (initialOccasion?: string) => {
@@ -73,10 +76,7 @@ export const App: React.FC = () => {
         {/* Section 3: GALLERY */}
         <GallerySection />
 
-        {/* Section 5: REVIEWS */}
-        <SocialProof />
-
-        {/* Section 6: LOCATION */}
+        {/* Section 4: LOCATION */}
         <LocationSection />
       </main>
 

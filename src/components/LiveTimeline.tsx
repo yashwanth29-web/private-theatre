@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Slot } from '../types';
+import { DEFAULT_SLOTS } from '../data/content';
 import { Sparkles, Clock, CheckCircle, XCircle, ArrowRight, RefreshCw } from 'lucide-react';
 
 interface LiveTimelineProps {
@@ -14,10 +15,12 @@ export const LiveTimeline: React.FC<LiveTimelineProps> = ({ onSelectSlot }) => {
     return d.toISOString().split('T')[0];
   };
 
+  const defaultAvailableSlots: Slot[] = DEFAULT_SLOTS.map((s) => ({ ...s, status: 'available' }));
+
   const [selectedDate, setSelectedDate] = useState<string>(getTodayStr());
-  const [slots, setSlots] = useState<Slot[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [availableCount, setAvailableCount] = useState<number>(0);
+  const [slots, setSlots] = useState<Slot[]>(defaultAvailableSlots);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [availableCount, setAvailableCount] = useState<number>(defaultAvailableSlots.length);
 
   const fetchAvailability = async (dateStr: string) => {
     setLoading(true);
@@ -25,11 +28,17 @@ export const LiveTimeline: React.FC<LiveTimelineProps> = ({ onSelectSlot }) => {
       const res = await fetch(`/api/availability?date=${dateStr}`);
       if (res.ok) {
         const data = await res.json();
-        setSlots(data.slots || []);
-        setAvailableCount(data.availableCount || 0);
+        if (data.slots && data.slots.length > 0) {
+          setSlots(data.slots);
+          setAvailableCount(data.availableCount ?? data.slots.length);
+          return;
+        }
       }
-    } catch (err) {
-      console.error('Failed to fetch availability:', err);
+      setSlots(defaultAvailableSlots);
+      setAvailableCount(defaultAvailableSlots.length);
+    } catch {
+      setSlots(defaultAvailableSlots);
+      setAvailableCount(defaultAvailableSlots.length);
     } finally {
       setLoading(false);
     }

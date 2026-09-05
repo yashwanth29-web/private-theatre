@@ -1,4 +1,4 @@
-import { OccasionItem, Movie } from '../types';
+import { OccasionItem, Movie, Package, AddOn, Slot } from '../types';
 
 // Authentic High-Resolution Photographs (1080p+, direct, zero thumbnails)
 export const REAL_IMAGES = {
@@ -190,4 +190,123 @@ export const POPULAR_MOVIES: Movie[] = [
     poster: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=80',
     source: 'Prime Video • Dolby 5.1',
   },
+];
+
+export const DEFAULT_PACKAGES: Package[] = [
+  {
+    id: 'cinema-classic',
+    name: 'Cinema Classic',
+    tagline: 'Pure private movie immersion',
+    price: 1499,
+    originalPrice: 1999,
+    duration: '2.5 Hours',
+    guests: 'Up to 4 Guests',
+    popular: false,
+    features: [
+      'Exclusive private 4K HDR theatre hall',
+      'Dolby Atmos surround sound acoustics',
+      'Plush velvet recliner & lounge seating',
+      'Full OTT access (Netflix, Prime, Disney+) or HDMI/USB',
+      'Air-conditioned private suite',
+      'Complimentary popcorn & cold drinks',
+    ],
+  },
+  {
+    id: 'date-night-romantic',
+    name: 'Date Night Romantic',
+    tagline: 'The ultimate romantic movie getaway',
+    price: 2299,
+    originalPrice: 2899,
+    duration: '2.5 Hours',
+    guests: 'Couple (2 Guests)',
+    popular: true,
+    features: [
+      'Exclusive romantic candle & fairy-light decor',
+      'Rose petal entryway and table setup',
+      '4K Dolby Atmos private movie screening',
+      'Heart-shaped celebration cake with candle',
+      'Couple heart balloons & photo frame setup',
+      'Complimentary snack basket & mocktails',
+      'Personalized romantic on-screen greeting slide',
+    ],
+  },
+  {
+    id: 'grand-celebration',
+    name: 'Grand Celebration',
+    tagline: 'Birthdays, Anniversaries & Proposals',
+    price: 3499,
+    originalPrice: 4299,
+    duration: '3.0 Hours',
+    guests: 'Up to 8 Guests',
+    popular: false,
+    features: [
+      'Full balloon garland & theme celebration backdrop',
+      'Luminescent Neon sign ("Happy Birthday" / "Marry Me" / "Happy Anniversary")',
+      '1/2 Kg customized gourmet celebration cake',
+      'Party poppers, smoke blast & photography props',
+      'Custom montage / slide video played on 150-inch 4K screen',
+      'Celebration snack platters & signature mocktails',
+      'Assistance for cake cutting & surprise timing',
+    ],
+  },
+  {
+    id: 'custom-vip-gala',
+    name: 'Custom VIP Gala',
+    tagline: 'For unforgettable family & group memories',
+    price: 5499,
+    originalPrice: 6999,
+    duration: '3.5 Hours',
+    guests: 'Up to 14 Guests',
+    popular: false,
+    features: [
+      'Extended 3.5-hour exclusive lounge & theatre access',
+      'Premium custom decor tailored to your milestone',
+      '1 Kg Premium Designer Cake',
+      'Multi-platter gourmet finger foods & refreshments',
+      'Professional photography assistance & photo print keepsake',
+      'Karaoke / Spotify party music setup + 4K Cinema',
+      'Dedicated VIP hospitality coordinator',
+    ],
+  },
+];
+
+export const DEFAULT_ADDONS: AddOn[] = [
+  {
+    id: 'addon-rose-bouquet',
+    name: 'Fresh Dutch Rose Bouquet',
+    price: 599,
+    description: 'Hand-tied premium red roses bouquet for your special one',
+  },
+  {
+    id: 'addon-red-velvet-cake',
+    name: 'Gourmet Red Velvet Heart Cake (1/2 Kg)',
+    price: 499,
+    description: 'Freshly baked artisan heart cake with custom name piping',
+  },
+  {
+    id: 'addon-onscreen-video',
+    name: 'Custom 4K On-Screen Video Surprise',
+    price: 399,
+    description: 'Send us your photos/video; we produce and play a cinematic surprise on screen',
+  },
+  {
+    id: 'addon-mini-photoshoot',
+    name: 'Mini Photo & Reel Shoot',
+    price: 799,
+    description: 'High-res photos + 1 aesthetic Instagram reel shot and edited by our team',
+  },
+  {
+    id: 'addon-party-snack-combo',
+    name: 'Deluxe Nachos & Mocktail Platter',
+    price: 349,
+    description: 'Crisp tortilla nachos with warm salsa & 2 iced fruit mocktails',
+  },
+];
+
+export const DEFAULT_SLOTS: Slot[] = [
+  { id: 'slot-1', label: '10:00 AM - 12:30 PM', shortTime: '10:00 AM', tier: 'Matinee' },
+  { id: 'slot-2', label: '01:00 PM - 03:30 PM', shortTime: '01:00 PM', tier: 'Afternoon' },
+  { id: 'slot-3', label: '04:00 PM - 06:30 PM', shortTime: '04:00 PM', tier: 'Sunset' },
+  { id: 'slot-4', label: '07:00 PM - 09:30 PM', shortTime: '07:00 PM', tier: 'Prime Evening' },
+  { id: 'slot-5', label: '10:00 PM - 12:30 AM', shortTime: '10:00 PM', tier: 'Midnight Special' },
 ];

@@ -96,23 +96,49 @@ interface SlotHold {
 }
 let activeHolds: SlotHold[] = [];
 
-// Helper functions for atomic read/write
+// Helper functions for atomic read/write with in-memory fallback
+let memoryDB: Database | null = null;
+
 function readDB(): Database {
   try {
-    const raw = fs.readFileSync(DB_PATH, 'utf-8');
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error('Error reading database:', err);
-    throw new Error('Database read failed');
+    if (fs.existsSync(DB_PATH)) {
+      const raw = fs.readFileSync(DB_PATH, 'utf-8');
+      return JSON.parse(raw);
+    }
+  } catch {
+    // Continue to fallback
   }
+
+  if (!memoryDB) {
+    try {
+      const fallbackPath = path.resolve(process.cwd(), 'server', 'data', 'store.json');
+      if (fs.existsSync(fallbackPath)) {
+        memoryDB = JSON.parse(fs.readFileSync(fallbackPath, 'utf-8'));
+        return memoryDB!;
+      }
+    } catch {
+      // Continue to default
+    }
+  }
+
+  return memoryDB || {
+    slots: [],
+    packages: [],
+    addOns: [],
+    reviews: [],
+    blockedSlots: [],
+    bookings: [],
+  };
 }
 
 function writeDB(data: Database): void {
+  memoryDB = data;
   try {
+    const dir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
-  } catch (err) {
-    console.error('Error writing database:', err);
-    throw new Error('Database write failed');
+  } catch {
+    // Non-fatal on read-only serverless filesystems
   }
 }
 
@@ -471,6 +497,10 @@ app.post('/api/admin/reviews', (req: Request, res: Response) => {
   return res.json({ success: true, review: newRev });
 });
 
-app.listen(PORT, () => {
-  console.log(`🎬 Movie Date Guntur API server running on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🎬 Movie Date Guntur API server running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
